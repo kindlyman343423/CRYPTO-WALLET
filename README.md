@@ -17,6 +17,9 @@ OR
 3. Double click on index.html.
 4. Open the browser.
 
+## SCREENSHOT OF REAL TIME WALLET
+![SCREENSHOT OF REAL TIME WALLET](images/output.png)
+
 ## AUTHOR
 1. GAURAV WALIA
 2. OCTAHACK TEAM
