@@ -8,11 +8,11 @@ This is a project in which we have tried to make a an crypto currency wallet...
 
 ## RUN (all os)?
 1. Open the terminal and execute the given command:
-> git clone https://github.com/GauravWalia19/CRYPTO-WALLET.git
+```
+git clone https://github.com/GauravWalia19/CRYPTO-WALLET.git
+```
 OR 
-1. Download zip from the link https://github.com/GauravWalia19/CRYPTO-WALLET.git
-> Extract the zip file.
-
+1. Download zip from the link https://github.com/GauravWalia19/CRYPTO-WALLET.git and Extract the zip file.
 2. Open the folder named CRYTO-WALLET.
 3. Double click on index.html.
 4. Open the browser.
