@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>bitcoin data</title>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+   <script>
+   function setup(){
+      //createCanvas(400,200);
+      //var my = loadJSON('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',gotData);
+   }
+   /*
+   function draw()
+   {
+      background(0);
+      if(weather)
+      {
+
+         document.write(weather.USD);
+      }
+   }*/
+   window.onload = function () {
+      var dps = []; // dataPoints
+      var chart = new CanvasJS.Chart("chartContainer", {
+      	title :{
+      		text: "REAL TIME BITCOIN STATISTICS"
+      	},
+      	axisY: {
+      		includeZero: false
+      	},
+      	data: [{
+      		type: "line",
+      		dataPoints: dps
+      	}]
+      });
+      var weather=0;
+      var min=0;
+      function gotData(data)
+      {
+         //console.log(weather.USD);
+         //var hell = weather.USD;
+         weather = data.USD;
+      }
+      var xVal = 0;
+      var yVal = 7000;
+      var updateInterval = 5000;
+      var dataLength = 10; // number of dataPoints visible at any point
+      //console.log(weather.USD);
+      var updateChart = function (count) {
+         loadJSON('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',gotData);
+         //loadJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD',gotData);
+         //console.log();
+         //console.log(weather/1000);
+      	count = count || 1;
+      	for (var j = 0; j < count; j++) {
+            //console.log(hello/1000);
+      		yVal = weather;//Math.round(5 + Math.random() *(-5-5))
+            min = weather;
+            if(weather > min)
+            {
+               min = weather;
+            }
+      		dps.push({
+      			x: xVal,
+      			y: yVal
+      		});
+      		xVal+=1;
+      	}
+         console.log(min);
+      	if (dps.length > dataLength) {
+      		dps.shift();
+      	}
+
+      	chart.render();
+      };
+
+      updateChart(dataLength);
+      setInterval(function(){updateChart()}, updateInterval);
+
+      }
+
+   </script>
+</head>
+<body>
+   <div id="chartContainer" style="height: 800px; width:50%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+/*BALANCE*/
+#right{
+   float: right;
+   margin-top: -100px;
+   margin-right: 150px;
+   color: white;
+}
+.mainblock{
+   display: inline-block;
+}
+#bitcoin-image{
+   height: 100px;
+   width: 100px;
+}
+#right-head{
+   font-size: 4vw;
+   margin-right: 150px;
+}
+#balance{
+   font-size: 2vw;
+   padding: 20px;
+   margin-right: 100px;
+   float: right;
+}
+.right-div{
+   display: inline-block;
+}
+/*ECHAGNE CURRENCY*/
+#center-head{
+   font-size: 4vw;
+}
+.center-content{
+   display: inline-block;
+}
+#center-image{
+   height: 100px;
+   width: 100px;
+}
+#center-p{
+   color: white;
+   font-size: 2vw;
+   margin-left: 350px;
+}
+
+/*CHANGING CURRENCY*/
+#left{
+   margin-left: 200px;
+}
+#left-select{
+   font-size: 20px;
+}
+
+/*styling background*/
+#background{
+   z-index: -1;
+   position: relative;
+}
+body{
+   background: url('../images/back1.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+/*styling currency select option*/
+.opt{
+   text-align: center;
+}
+/*THE MIDDLE CONTENT*/
+.middle{
+   text-align: center;
+}
+.middle{
+   padding:;
+   margin-top: 120px;
+}
+#middle-text{
+   font-size: 2vw;
+}
+/*GRAPHS*/
+#chartContainer{
+   margin-left: 300px;
+   margin-right: 50px;
+}
+#chtCont{
+   margin-left: 50px;
+   margin-right: -300px;
+}
+.down{
+   display:  inline-block;
+}

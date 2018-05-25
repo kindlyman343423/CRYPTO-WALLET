@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>YOYO SQUAD</title>
+   <link rel="stylesheet" href="css/design.css"/>
+   <script src="scripts/script.js"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+   <script>
+   var weather=0;
+   function setup(){
+      //createCanvas(400,200);
+      //var my = loadJSON('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',gotData);
+   }
+   /*
+   function draw()
+   {
+      background(0);
+      if(weather)
+      {
+
+         document.write(weather.USD);
+      }
+   }*/
+   window.onload = function () {
+      var dps = []; // dataPoints
+      var chart = new CanvasJS.Chart("chartContainer", {
+      	title :{
+      		text: "REAL TIME BITCOIN STATISTICS"
+      	},
+      	axisY: {
+      		includeZero: false
+      	},
+      	data: [{
+      		type: "line",
+      		dataPoints: dps
+      	}]
+      });
+      var min=0;
+      function gotData(data)
+      {
+         //console.log(weather.USD);
+         //var hell = weather.USD;
+         weather = data.USD;
+         document.getElementById('bitcoin-current-value').innerHTML=weather;
+         var nn = document.getElementById('middle-text');
+         var n = nn.value;
+         document.getElementById('result').innerHTML = n/weather;
+      }
+      var xVal = 0;
+      var yVal = 7000;
+      var updateInterval = 5000;
+      var dataLength = 10; // number of dataPoints visible at any point
+      //console.log(weather.USD);
+      var updateChart = function (count) {
+         loadJSON('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',gotData);
+         //loadJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD',gotData);
+         //console.log();
+         //console.log(weather/1000);
+      	count = count || 1;
+      	for (var j = 0; j < count; j++) {
+            //console.log(hello/1000);
+      		yVal = weather;//Math.round(5 + Math.random() *(-5-5))
+            min = weather;
+            if(weather > min)
+            {
+               min = weather;
+            }
+      		dps.push({
+      			x: xVal,
+      			y: yVal
+      		});
+      		xVal+=1;
+      	}
+         //console.log(min);
+      	if (dps.length > dataLength) {
+      		dps.shift();
+      	}
+
+      	chart.render();
+      };
+
+      updateChart(dataLength);
+      setInterval(function(){updateChart()}, updateInterval);
+
+      }
+
+   </script>
+</head>
+<body>
+   <!--########################## BACKGROUND ROLLING TEXT #######################-->
+   <div id="background">
+      <marquee><span id="">hello</span></marquee>
+      <marquee><span id="">43463458$</span></marquee>
+   </div>
+   <!--############################ CHANGING CURRENCY ############################-->
+   <div id="left">
+      <select id="left-select" onclick="change()">
+         <option class="left-option" value="USD">USD</option>
+         <option class="left-option" value="RUPPEE">RUPPEE</option>
+         <option class="left-option" value="EURO">EURO</option>
+      </select>
+   </div>
+   <!--############################### ECHANGE RATE ####################################-->
+      <div style="color:white" id="center" class="mainblock">
+         <img src="images/bitlogo.png" id="center-image" class="center-content"/>
+         <h1 id="center-head" class="center-content">EXCHANGE RATE</h1>
+         <p id="center-p"><span id="bitcoin-current-value">0000</span>$</p>
+      </div>
+   <!--###################################### BALANCE #######################################-->
+      <div id="right"  class="mainblock">
+         <h1 id="right-head">BALANCE</h1>
+         <div class="right-div">
+            <img src="images/bitcoin.png" id="bitcoin-image"/>
+         </div>
+         <div class="right-div" id="balance">
+            <span id="result">0</span>
+            <span>BTC</span>
+         </div>
+      </div>
+   <!--################################# DOWN TEXT ##########################################-->
+   <div id="chartContainer" style="height: 500px; width:50%;"></div>
+   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+      <div class="middle">
+         <form>
+            <input type="number" placeholder="VALUE" id="middle-text" oninput="mid()"/>
+            <p style="color: white;">ENTER VALUE IN <span id="middle-down" value="USD"></span></p>
+         </form>
+      </div>
+   <!--############################### FOOTER CONTENT ###########################################-->
+   <footer>
+
+      &copy;MADE BY ANONYMOUS
+   </footer>
+</body>
+</html>
